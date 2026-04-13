@@ -72,8 +72,8 @@ section{position:relative;overflow:hidden;}
 .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.71rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:.9rem;}
 .eyebrow::before{content:'';width:16px;height:1.5px;background:var(--accent);border-radius:2px;flex-shrink:0;}
 h1,h2,h3{letter-spacing:-.03em;line-height:1.1;font-weight:800;}
-.xl{font-size:clamp(1.9rem,4.1vw,2.85rem);}
-.hero h1 .line{display:block;white-space:nowrap;}
+.xl{font-size:clamp(2.1rem,4.9vw,3.8rem);}
+.hero h1 .line{display:block;white-space:nowrap;line-height:1.24;padding-bottom:.04em;}
 .lg{font-size:clamp(1.9rem,3.6vw,3rem);}
 .grad{background:linear-gradient(135deg,#fff 25%,#7aadff 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 .blue{background:linear-gradient(135deg,var(--accent),#7aadff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
@@ -110,10 +110,6 @@ h1,h2,h3{letter-spacing:-.03em;line-height:1.1;font-weight:800;}
 /* VSL */
 .vsl-section{padding:0 24px 48px;}
 .vsl-outer{max-width:860px;margin:0 auto;border-radius:14px;overflow:hidden;background:var(--surface);border:1px solid var(--border2);box-shadow:0 0 80px rgba(61,127,255,.09),0 40px 80px rgba(0,0,0,.5);}
-.vsl-chrome{background:var(--surface2);padding:12px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border);}
-.dots{display:flex;gap:6px;}
-.dot{width:11px;height:11px;border-radius:50%;}
-.vsl-url-bar{flex:1;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:5px;padding:5px 12px;font-size:.74rem;color:var(--muted);display:flex;align-items:center;justify-content:center;letter-spacing:.03em;}
 .vsl-embed{width:100%;aspect-ratio:16/9;display:block;border:none;}
 
 /* STATS */
@@ -336,9 +332,6 @@ html,body{max-width:100%;overflow-x:hidden;}
   /* MISC */
   .eyebrow{margin-bottom:.5rem;}
   h2.lg{font-size:1.6rem;}
-  .vsl-chrome{padding:8px 12px;}
-  .vsl-url-bar{font-size:.67rem;}
-  .dots .dot{width:8px;height:8px;}
   .scroll-hint{display:none;}
 }
 
@@ -467,14 +460,6 @@ html,body{max-width:100%;overflow-x:hidden;}
 <!-- VSL -->
 <section class="vsl-section" id="video">
   <div class="vsl-outer ani">
-    <div class="vsl-chrome">
-      <div class="dots">
-        <div class="dot" style="background:#ff5f56"></div>
-        <div class="dot" style="background:#ffbd2e"></div>
-        <div class="dot" style="background:#27c93f"></div>
-      </div>
-      <div class="vsl-url-bar">🔒 Terminify Strategie Video</div>
-    </div>
     <div style="position:relative;aspect-ratio:16/9;width:100%;">
       <script src="https://fast.wistia.com/embed/medias/s5wchi9l7w.jsonp" async></script>
       <script src="https://fast.wistia.com/assets/external/E-v1.js" async></script>
