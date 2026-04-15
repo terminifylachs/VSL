@@ -36,8 +36,10 @@ fbq('track', 'PageView');
   :root {
     --void-navy: #0A0C12;
     --void-depth: #0E1018;
-    --signal-blue: #4A6CF7;
-    --highlight-blue: #5B8AF5;
+    --signal-blue: #c1ff72;
+    --highlight-blue: #c1ff72;
+    --accent-dark: #0A0C12;
+    --accent-hover: #a7e65a;
     --body-text: #9aa3b2;
     --muted-text: #6b7280;
   }
@@ -57,7 +59,7 @@ fbq('track', 'PageView');
     background: center / contain no-repeat url('https://fast.wistia.com/embed/medias/s5wchi9l7w/swatch');
     display: block;
     filter: blur(5px);
-    padding-top: 56.25%;
+    padding-top: 49.87%;
   }
 
   /* Radial glows */
@@ -66,12 +68,12 @@ fbq('track', 'PageView');
     content: ''; position: absolute; width: 40%; height: 40%;
     filter: blur(120px); border-radius: 9999px;
   }
-  .glow-wrap::before { top: 10%; left: -10%; background: rgba(91,138,245,0.05); }
-  .glow-wrap::after  { bottom: 10%; right: -10%; background: rgba(74,108,247,0.05); }
+  .glow-wrap::before { top: 10%; left: -10%; background: rgba(193,255,114,0.05); }
+  .glow-wrap::after  { bottom: 10%; right: -10%; background: rgba(193,255,114,0.05); }
 
   /* Header */
   header.site-nav {
-    position: sticky; top: 0; z-index: 50;
+    position: relative; z-index: 50;
     background: rgba(10,12,18,0.8);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
@@ -125,41 +127,19 @@ fbq('track', 'PageView');
     box-shadow: 0 25px 50px -12px rgba(0,0,0,0.6);
     overflow: hidden;
   }
-  .video-chrome {
-    width: 100%; height: 2.5rem;
-    background: #1A1C23;
-    display: flex; align-items: center; padding: 0 1rem;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-  }
-  .video-chrome .dots { display: flex; gap: 0.5rem; margin-right: 1.5rem; }
-  .video-chrome .dots span { width: 12px; height: 12px; border-radius: 9999px; }
-  .video-chrome .dots span:nth-child(1) { background: #FF5F57; }
-  .video-chrome .dots span:nth-child(2) { background: #FEBC2E; }
-  .video-chrome .dots span:nth-child(3) { background: #28C840; }
-  .video-chrome .url-bar {
-    flex: 1; background: rgba(10,12,18,0.5);
-    height: 1.5rem; display: flex; align-items: center; padding: 0 0.75rem;
-    border: 1px solid rgba(255,255,255,0.05); border-radius: 2px;
-  }
-  .video-chrome .url-bar span {
-    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-    font-size: 10px; color: var(--muted-text);
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-  }
-
   /* CTA button */
   .cta-wrap { margin-bottom: 5rem; }
   .cta-btn {
     display: inline-flex; align-items: center; gap: 0.75rem;
-    background: var(--signal-blue); color: #fff;
+    background: var(--signal-blue); color: var(--accent-dark);
     padding: 1.25rem 2.5rem; border-radius: 2px;
     font-weight: 700; font-size: 1.125rem;
-    box-shadow: 0 20px 25px -5px rgba(74,108,247,0.2);
+    box-shadow: 0 20px 25px -5px rgba(193,255,114,0.2);
     transition: all 0.3s ease;
   }
   .cta-btn:hover {
-    background: var(--highlight-blue);
-    box-shadow: 0 20px 25px -5px rgba(91,138,245,0.3);
+    background: var(--accent-hover);
+    box-shadow: 0 20px 25px -5px rgba(193,255,114,0.35);
   }
   .cta-btn svg { width: 20px; height: 20px; transition: transform 0.3s ease; }
   .cta-btn:hover svg { transform: translate(4px, -4px); }
@@ -207,7 +187,7 @@ fbq('track', 'PageView');
   }
   .tcard:hover {
     transform: translateY(-4px);
-    border-color: rgba(91,138,245,0.4);
+    border-color: rgba(193,255,114,0.4);
   }
   .tcard img {
     position: absolute; inset: 0;
@@ -218,18 +198,19 @@ fbq('track', 'PageView');
     position: absolute; inset: 0;
     margin: auto;
     width: 56px; height: 56px;
-    background: rgba(91,138,245,0.9);
+    background: rgba(193,255,114,0.95);
     border: none; border-radius: 9999px;
     display: flex; align-items: center; justify-content: center;
     cursor: pointer;
-    box-shadow: 0 0 40px rgba(91,138,245,0.5);
+    box-shadow: 0 0 40px rgba(193,255,114,0.5);
     transition: transform 0.3s ease, background 0.3s ease;
   }
   .tcard-play svg { margin-left: 4px; }
-  .tcard:hover .tcard-play { transform: scale(1.1); background: var(--highlight-blue); }
+  .tcard-play svg path { fill: var(--accent-dark); }
+  .tcard:hover .tcard-play { transform: scale(1.1); background: var(--accent-hover); }
   .tcard-placeholder {
     display: flex; align-items: center; justify-content: center;
-    background: linear-gradient(180deg, rgba(91,138,245,0.04), rgba(14,16,24,0.8));
+    background: linear-gradient(180deg, rgba(193,255,114,0.04), rgba(14,16,24,0.8));
     border-style: dashed;
   }
   .tcard-placeholder span {
@@ -318,11 +299,7 @@ fbq('track', 'PageView');
     <h2 class="hero-headline"><span class="blue">Schritt 1:</span> Schaue das Video</h2>
 
     <div class="video-container">
-      <div class="video-chrome">
-        <div class="dots"><span></span><span></span><span></span></div>
-        <div class="url-bar"><span>&#128640; Terminify Strategie-Video</span></div>
-      </div>
-      <wistia-player media-id="s5wchi9l7w" aspect="1.7777777777777777"></wistia-player>
+      <wistia-player media-id="s5wchi9l7w" aspect="2.0052"></wistia-player>
     </div>
 
     <h2 class="hero-headline"><span class="blue">Schritt 2:</span> Buche dir einen Termin</h2>
