@@ -84,13 +84,11 @@ fbq('track', 'PageView');
   .glow-wrap::before { top: -5%; left: 50%; transform: translateX(-50%); width: 55%; height: 55%; background: rgba(193,255,114,0.09); }
   .glow-wrap::after  { top: 45%; left: -10%; width: 35%; height: 45%; background: rgba(193,255,114,0.04); }
 
-  /* Header */
+  /* Header — transparent, merges into hero */
   header.site-nav {
     position: relative; z-index: 50;
-    background: rgba(10,12,18,0.8);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    background: transparent;
+    border-bottom: none;
   }
   header.site-nav .nav-inner {
     max-width: 56rem; margin: 0 auto; padding: 0 1.5rem;
@@ -134,11 +132,11 @@ fbq('track', 'PageView');
   /* Main headline */
   .hero-main-headline {
     font-weight: 900;
-    font-size: clamp(2.4rem, 5.2vw, 4.2rem);
+    font-size: clamp(2.1rem, 4.6vw, 3.7rem);
     line-height: 1.08;
     letter-spacing: -0.025em;
     margin: 0 auto 4rem;
-    max-width: 940px;
+    max-width: 860px;
     text-align: center;
     color: #ffffff;
     background: linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0.82) 100%);
@@ -396,7 +394,6 @@ fbq('track', 'PageView');
   </header>
 
   <main>
-    <div class="hero-eyebrow">KI-Akquise-System</div>
 
     <h1 class="hero-main-headline">Das KI System, mit dem Fitnesscoaches auf gute 5 bis 6-stellige Monatsumsätze skalieren.</h1>
 
