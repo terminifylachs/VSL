@@ -52,6 +52,19 @@ fbq('track', 'PageView');
     font-size: 16px;
     line-height: 1.6;
     overflow-x: hidden;
+    position: relative;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 20%, transparent 80%);
+    -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, #000 20%, transparent 80%);
+    pointer-events: none;
+    z-index: 0;
   }
   a { color: inherit; text-decoration: none; }
   img { display: block; max-width: 100%; }
@@ -63,13 +76,13 @@ fbq('track', 'PageView');
   }
 
   /* Radial glows */
-  .glow-wrap { position: absolute; inset: 0; pointer-events: none; overflow: hidden; }
+  .glow-wrap { position: absolute; inset: 0; pointer-events: none; overflow: hidden; z-index: 0; }
   .glow-wrap::before, .glow-wrap::after {
-    content: ''; position: absolute; width: 40%; height: 40%;
-    filter: blur(120px); border-radius: 9999px;
+    content: ''; position: absolute;
+    filter: blur(160px); border-radius: 9999px;
   }
-  .glow-wrap::before { top: 10%; left: -10%; background: rgba(193,255,114,0.05); }
-  .glow-wrap::after  { bottom: 10%; right: -10%; background: rgba(193,255,114,0.05); }
+  .glow-wrap::before { top: -5%; left: 50%; transform: translateX(-50%); width: 55%; height: 55%; background: rgba(193,255,114,0.09); }
+  .glow-wrap::after  { top: 45%; left: -10%; width: 35%; height: 45%; background: rgba(193,255,114,0.04); }
 
   /* Header */
   header.site-nav {
@@ -89,50 +102,78 @@ fbq('track', 'PageView');
   main {
     position: relative; z-index: 10;
     max-width: 1200px; margin: 0 auto;
-    padding: 4rem 1.5rem 6rem;
+    padding: 5rem 1.5rem 5rem;
     text-align: center;
   }
 
-  /* Step sub-headline */
-  .hero-headline {
-    font-weight: 800;
-    font-size: clamp(1.1rem, 1.6vw, 1.4rem);
-    line-height: 1.2;
-    letter-spacing: -0.01em;
-    margin-bottom: 1.25rem;
+  /* Hero eyebrow */
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(193,255,114,0.25);
+    background: rgba(193,255,114,0.06);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--highlight-blue);
+    margin-bottom: 2rem;
   }
-  .hero-headline .blue { color: var(--highlight-blue); }
+  .hero-eyebrow::before {
+    content: ''; width: 6px; height: 6px; border-radius: 9999px;
+    background: var(--highlight-blue);
+    box-shadow: 0 0 12px var(--highlight-blue);
+    animation: eyebrowPulse 2s ease-in-out infinite;
+  }
+  @keyframes eyebrowPulse {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.4; }
+  }
 
   /* Main headline */
   .hero-main-headline {
     font-weight: 900;
-    font-size: clamp(2.5rem, 5.2vw, 4.2rem);
-    line-height: 1.1;
-    letter-spacing: -0.02em;
-    margin: 0.2rem auto 3rem;
-    max-width: 960px;
+    font-size: clamp(2.4rem, 5.2vw, 4.2rem);
+    line-height: 1.08;
+    letter-spacing: -0.025em;
+    margin: 0 auto 4rem;
+    max-width: 940px;
     text-align: center;
-    background: linear-gradient(135deg, #ffffff 25%, #7aadff 100%);
+    color: #ffffff;
+    background: linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0.82) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  .hero-main-headline .hl-mark {
-    display: inline-block;
-    background: var(--highlight-blue);
-    color: var(--accent-dark);
-    -webkit-text-fill-color: var(--accent-dark);
-    padding: 0.05em 0.25em;
-    border-radius: 8px;
-    box-shadow: 0 4px 20px rgba(193,255,114,0.25);
+
+  /* Step pill badge */
+  .step-pill {
+    display: inline-flex; align-items: center; gap: 0.75rem;
+    padding: 0.65rem 1.25rem;
+    border-radius: 9999px;
+    border: 1px solid rgba(193,255,114,0.28);
+    background: rgba(193,255,114,0.06);
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.92);
+    margin: 0 auto 1rem;
+    box-shadow: 0 0 40px rgba(193,255,114,0.08);
+  }
+  .step-pill .step-num {
+    color: var(--highlight-blue);
+    padding-right: 0.75rem;
+    border-right: 1px solid rgba(193,255,114,0.28);
   }
 
-  /* Subtle scroll hint arrow (matches vsl.terminify.ai root) */
+  /* Subtle scroll hint arrow */
   .scroll-hint {
     display: flex; justify-content: center;
-    color: var(--muted-text);
-    margin: 0 auto 1.5rem;
-    animation: bob 3s ease-in-out infinite;
+    color: rgba(193,255,114,0.55);
+    margin: 0 auto 1rem;
+    animation: bob 2.4s ease-in-out infinite;
   }
   @keyframes bob {
     0%, 100% { transform: translateY(0); }
@@ -140,19 +181,32 @@ fbq('track', 'PageView');
   }
 
   /* Video frame */
+  .video-wrap {
+    position: relative;
+    max-width: 1100px;
+    margin: 0 auto 5rem;
+    padding: 6px;
+    border-radius: 20px;
+    background: linear-gradient(135deg, rgba(193,255,114,0.3), rgba(193,255,114,0.05) 40%, rgba(255,255,255,0.04) 100%);
+  }
+  .video-wrap::before {
+    content: '';
+    position: absolute; inset: -30px;
+    background: radial-gradient(ellipse at center, rgba(193,255,114,0.15), transparent 65%);
+    filter: blur(40px);
+    z-index: -1;
+    pointer-events: none;
+  }
   .video-container {
     position: relative;
     width: 100%;
-    max-width: 1100px;
-    margin: 0 auto 4rem;
     border-radius: 14px;
-    border: 1px solid rgba(255,255,255,0.1);
     background: var(--void-depth);
-    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.6);
+    box-shadow: 0 30px 80px -20px rgba(0,0,0,0.7);
     overflow: hidden;
   }
   /* CTA button — matches vsl.terminify.ai root .btn-primary.btn-lg */
-  .cta-wrap { margin-bottom: 5rem; }
+  .cta-wrap { margin: 1.5rem 0 4rem; }
   .cta-btn {
     display: inline-flex; align-items: center; gap: 10px;
     font-family: inherit; font-weight: 700;
@@ -175,13 +229,21 @@ fbq('track', 'PageView');
   .testi-section {
     position: relative; z-index: 10;
     max-width: 1200px; margin: 0 auto;
-    padding: 2rem 1.5rem 6rem;
+    padding: 3rem 1.5rem 7rem;
     text-align: center;
+  }
+  .testi-section::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%; transform: translateX(-50%);
+    width: min(600px, 80%);
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(193,255,114,0.25), transparent);
   }
   .testi-eyebrow {
     display: inline-block;
     color: var(--highlight-blue);
-    font-size: 0.75rem;
+    font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.3em;
     text-transform: uppercase;
@@ -189,10 +251,14 @@ fbq('track', 'PageView');
   }
   .testi-headline {
     font-weight: 900;
-    font-size: clamp(1.75rem, 3.2vw, 2.75rem);
+    font-size: clamp(1.9rem, 3.6vw, 3rem);
     line-height: 1.1;
     letter-spacing: -0.02em;
-    margin-bottom: 3rem;
+    margin-bottom: 3.5rem;
+    background: linear-gradient(180deg, #ffffff 0%, rgba(255,255,255,0.82) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
   .tgrid {
     display: grid;
@@ -206,15 +272,23 @@ fbq('track', 'PageView');
   .tcard {
     position: relative;
     aspect-ratio: 9 / 16;
-    border-radius: 14px;
+    border-radius: 16px;
     overflow: hidden;
     background: var(--void-depth);
-    border: 1px solid rgba(255,255,255,0.1);
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    border: 1px solid rgba(255,255,255,0.08);
+    transition: transform 0.35s ease, border-color 0.35s ease, box-shadow 0.35s ease;
+  }
+  .tcard::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.55) 100%);
+    pointer-events: none;
+    transition: opacity 0.35s ease;
   }
   .tcard:hover {
-    transform: translateY(-4px);
-    border-color: rgba(193,255,114,0.4);
+    transform: translateY(-6px);
+    border-color: rgba(193,255,114,0.45);
+    box-shadow: 0 20px 50px -20px rgba(193,255,114,0.25);
   }
   .tcard img {
     position: absolute; inset: 0;
@@ -224,12 +298,13 @@ fbq('track', 'PageView');
   .tcard-play {
     position: absolute; inset: 0;
     margin: auto;
-    width: 56px; height: 56px;
+    width: 58px; height: 58px;
     background: rgba(193,255,114,0.95);
     border: none; border-radius: 9999px;
     display: flex; align-items: center; justify-content: center;
     cursor: pointer;
-    box-shadow: 0 0 40px rgba(193,255,114,0.5);
+    z-index: 2;
+    box-shadow: 0 0 0 6px rgba(193,255,114,0.15), 0 10px 40px rgba(193,255,114,0.45);
     transition: transform 0.3s ease, background 0.3s ease;
   }
   .tcard-play svg { margin-left: 4px; }
@@ -321,19 +396,23 @@ fbq('track', 'PageView');
   </header>
 
   <main>
-    <h1 class="hero-main-headline">Das KI System, mit dem<br/><span class="hl-mark">Fitnesscoaches</span> auf gute 5 bis<br/>6-stellige Monatsumsätze skalieren.</h1>
+    <div class="hero-eyebrow">KI-Akquise-System</div>
 
-    <h2 class="hero-headline"><span class="blue">Schritt 1:</span> Schaue das Video</h2>
+    <h1 class="hero-main-headline">Das KI System, mit dem Fitnesscoaches auf gute 5 bis 6-stellige Monatsumsätze skalieren.</h1>
+
+    <div class="step-pill"><span class="step-num">Schritt 1</span>Schaue das Video</div>
 
     <div class="scroll-hint" aria-hidden="true">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
     </div>
 
-    <div class="video-container">
-      <wistia-player media-id="s5wchi9l7w" aspect="2.0052"></wistia-player>
+    <div class="video-wrap">
+      <div class="video-container">
+        <wistia-player media-id="s5wchi9l7w" aspect="2.0052"></wistia-player>
+      </div>
     </div>
 
-    <h2 class="hero-headline"><span class="blue">Schritt 2:</span> Buche dir einen Termin</h2>
+    <div class="step-pill"><span class="step-num">Schritt 2</span>Buche dir einen Termin</div>
 
     <div class="cta-wrap">
       <a class="cta-btn" href="https://api.leadconnectorhq.com/widget/bookings/lukas-mertens" target="_blank" rel="noopener noreferrer">
