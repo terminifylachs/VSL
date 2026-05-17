@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terminify — Strategie-Call buchen</title>
+<meta name="description" content="Buch dir deinen kostenfreien Strategie-Call. In 30 Minuten zeigen wir dir, wie dein Setup bei Terminify aussehen würde – inkl. Termin-Prognose und Bottleneck-Analyse.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+
+<link rel="preconnect" href="https://go.terminify.ai" crossorigin>
+<link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="dns-prefetch" href="https://go.terminify.ai">
+
+<!-- Facebook Pixel -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1783264035649259');
+fbq('track', 'PageView');
+</script>
+<noscript>
+<img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1783264035649259&ev=PageView&noscript=1"/>
+</noscript>
+<!-- End Facebook Pixel -->
+
+<!-- VSL Tracking -->
+<script>
+  window.VSL_TRACKER_URL = 'https://vsl-dashboard.vercel.app/api/track';
+</script>
+<script src="https://vsl-dashboard.vercel.app/tracker.js" async></script>
+<!-- End VSL Tracking -->
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          void: { navy: '#0A0C12', depth: '#0E1018', ink: '#050507', black: '#000001' },
+          card: { surface: '#161A26', light: '#1E2235' },
+          neon: { lime: '#c8f74f', green: '#2af10c', glow: '#9bf43a' },
+          reject: { red: '#F24E4E' },
+          'primary-text': '#FFFFFF',
+          'body-text': '#9CA3AF',
+          'muted-text': '#6B7280',
+        },
+        fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+        borderRadius: { xs: '6px', sm: '8px', md: '10px' },
+      },
+    },
+  }
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity .8s cubic-bezier(.22,.61,.36,1), transform .8s cubic-bezier(.22,.61,.36,1); }
+  .reveal.in { opacity: 1; transform: translateY(0); }
+
+  .grad-white { background-image: linear-gradient(to bottom, #ffffff, rgba(255,255,255,.6)); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+  .grad-lime { background-image: linear-gradient(to bottom, #c8f74f, #2af10c); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+
+  .icon { width: 1em; height: 1em; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; display: inline-block; vertical-align: middle; }
+  .icon-fill { fill: currentColor; stroke: currentColor; }
+
+  /* Booking widget: sensible height before form_embed.js resizes it */
+  #booking-frame { width: 100%; border: 0; overflow: hidden; min-height: 760px; display: block; }
+  @media (min-width: 768px) { #booking-frame { min-height: 700px; } }
+</style>
+</head>
+<body class="bg-void-black text-white">
+
+<!-- SVG icon sprite -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol>
+    <symbol id="i-arrow-left" viewBox="0 0 24 24"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></symbol>
+    <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.582a.5.5 0 0 1 0 .962L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></symbol>
+    <symbol id="i-shield-check" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+    <symbol id="i-phone" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+  </defs>
+</svg>
+
+<div class="relative min-h-screen bg-void-black text-white font-sans overflow-hidden">
+
+  <!-- Blueprint Background -->
+  <div class="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, #000001, #030305, #000001);"></div>
+    <div class="absolute inset-0" style="
+      opacity: 0.08;
+      background-image:
+        linear-gradient(rgba(200,247,79,0.4) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,247,79,0.4) 1px, transparent 1px);
+      background-size: 64px 64px;
+      -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,0,0,0.9) 0%, transparent 70%);
+              mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,0,0,0.9) 0%, transparent 70%);
+    "></div>
+    <div class="absolute inset-0" style="
+      opacity: 0.25;
+      background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.12) 1px, transparent 0);
+      background-size: 24px 24px;
+    "></div>
+    <div class="absolute" style="top:-20%; left:50%; transform:translateX(-50%); width:70%; height:60%; background:rgba(200,247,79,0.08); filter:blur(180px); border-radius:9999px;"></div>
+    <div class="absolute" style="bottom:-10%; right:-10%; width:50%; height:40%; background:rgba(200,247,79,0.06); filter:blur(160px); border-radius:9999px;"></div>
+  </div>
+
+  <!-- Navbar -->
+  <header class="relative z-50 sticky top-0">
+    <div class="pointer-events-none absolute inset-0 -bottom-8 bg-gradient-to-b from-void-black via-void-black/80 to-transparent backdrop-blur-md" style="-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 55%,transparent 100%);mask-image:linear-gradient(to bottom,#000 0%,#000 55%,transparent 100%);"></div>
+    <div class="relative max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+      <a href="https://vsl.terminify.ai/2"><img src="logo.jpg" alt="Terminify" class="h-6 w-auto object-contain"></a>
+      <a href="https://vsl.terminify.ai/2" class="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] font-semibold text-body-text hover:text-white transition-colors">
+        <svg class="icon" style="width:14px;height:14px"><use href="#i-arrow-left"/></svg>
+        Zurück
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative z-10 pt-10 pb-10 md:pt-16 md:pb-12">
+    <div class="max-w-3xl mx-auto px-6 text-center">
+      <div class="reveal mb-8 flex justify-center">
+        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-neon-lime/40 bg-neon-lime/[0.06] backdrop-blur-sm">
+          <svg class="icon text-neon-lime" style="width:14px;height:14px"><use href="#i-sparkles"/></svg>
+          <span class="text-[11px] uppercase tracking-[0.2em] font-semibold text-neon-lime">✦ Letzter Schritt</span>
+        </div>
+      </div>
+      <h1 class="reveal font-black tracking-[-0.03em] mb-6" style="font-size:clamp(1.95rem,5.2vw,3.75rem);line-height:1.12;">
+        <span class="grad-white block sm:whitespace-nowrap">Buch dir deinen kostenfreien</span>
+        <span class="grad-lime block sm:whitespace-nowrap">Strategie-Call.</span>
+      </h1>
+      <p class="reveal text-body-text text-base md:text-lg leading-[1.7] mb-8">
+        In 30 Minuten zeigen wir dir, wie dein Setup bei Terminify aussehen würde.
+        Inklusive konkreter Termin-Prognose und Bottleneck-Analyse deines aktuellen
+        Sales-Prozesses.
+      </p>
+      <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-6 text-xs uppercase tracking-[0.2em] text-muted-text">
+        <div class="flex items-center gap-2"><svg class="icon text-neon-lime" style="width:14px;height:14px"><use href="#i-clock"/></svg>30 Min</div>
+        <div class="w-px h-4 bg-white/10 hidden sm:block"></div>
+        <div class="flex items-center gap-2"><svg class="icon text-neon-lime" style="width:14px;height:14px"><use href="#i-shield-check"/></svg>100 Prozent kostenfrei</div>
+        <div class="w-px h-4 bg-white/10 hidden sm:block"></div>
+        <div class="flex items-center gap-2"><svg class="icon text-neon-lime" style="width:14px;height:14px"><use href="#i-phone"/></svg>Unverbindlich</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING WIDGET -->
+  <section class="relative z-10 pb-16 md:pb-24">
+    <div class="max-w-4xl mx-auto px-6">
+      <div class="reveal rounded-[14px] border border-white/10 bg-void-depth/80 backdrop-blur-sm shadow-[0_0_80px_rgba(200,247,79,0.08)] overflow-hidden p-2 sm:p-4 md:p-6">
+        <iframe
+          src="https://go.terminify.ai/widget/booking/96gJNxO6rzFCLXnYNeNl"
+          id="96gJNxO6rzFCLXnYNeNl_1779050200121"
+          scrolling="no"
+          loading="eager"
+          title="Terminify Strategie-Call buchen"
+          class="rounded-md bg-void-black"
+          style="width:100%;border:none;overflow:hidden;min-height:760px;display:block;"></iframe>
+      </div>
+
+      <!-- Social Proof -->
+      <div class="reveal mt-10 flex flex-col items-center gap-4 text-center">
+        <div class="flex items-center gap-3">
+          <div class="flex gap-1">
+            <svg class="icon-fill text-neon-lime" style="width:15px;height:15px"><use href="#i-star"/></svg>
+            <svg class="icon-fill text-neon-lime" style="width:15px;height:15px"><use href="#i-star"/></svg>
+            <svg class="icon-fill text-neon-lime" style="width:15px;height:15px"><use href="#i-star"/></svg>
+            <svg class="icon-fill text-neon-lime" style="width:15px;height:15px"><use href="#i-star"/></svg>
+            <svg class="icon-fill text-neon-lime" style="width:15px;height:15px"><use href="#i-star"/></svg>
+          </div>
+          <span class="text-sm font-black text-white">Exzellent</span>
+          <span class="text-[11px] uppercase tracking-[0.2em] text-muted-text">84+ Reviews</span>
+        </div>
+        <p class="text-xs uppercase tracking-[0.2em] text-muted-text flex items-center gap-2">
+          <svg class="icon text-neon-lime" style="width:14px;height:14px"><use href="#i-users"/></svg>
+          50+ Fitnesscoaches im DACH-Raum lassen ihre DMs längst von Terminify führen
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="relative z-10 border-t border-neon-lime/10 bg-void-black/70 backdrop-blur-md">
+    <div class="max-w-6xl mx-auto px-6 py-12">
+      <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-8 mb-10">
+        <div>
+          <img src="logo.jpg" alt="Terminify" class="h-6 w-auto object-contain mb-4">
+          <div class="text-xs text-muted-text leading-[1.7]">
+            M &amp; H Consulting GmbH<br>
+            Ratingen, Deutschland<br>
+            info@terminify.ai
+          </div>
+        </div>
+        <ul class="flex flex-wrap gap-x-8 gap-y-3 text-sm text-body-text">
+          <li><a href="https://vsl.terminify.ai/2" class="hover:text-neon-lime transition-colors">Zur Startseite</a></li>
+          <li><a href="https://vsl.terminify.ai/impressum/" class="hover:text-neon-lime transition-colors">Impressum</a></li>
+          <li><a href="https://vsl.terminify.ai/datenschutz/" class="hover:text-neon-lime transition-colors">Datenschutz</a></li>
+          <li><a href="https://vsl.terminify.ai/agb/" class="hover:text-neon-lime transition-colors">AGB</a></li>
+        </ul>
+      </div>
+      <div class="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-[10px] text-muted-text leading-[1.7] max-w-3xl">
+          *Haftungsausschluss: Die hier aufgeführten Ergebnisse sind in der Regel nur
+          erreichbar, wenn du an einem kostenfreien Strategie-Call teilnimmst und unser
+          System korrekt implementierst. Kein "schnell reich werden"-Programm. Die Angebote
+          richten sich ausdrücklich an Gewerbetreibende und Unternehmer im Sinne des §14 BGB.
+        </p>
+        <div class="text-[10px] uppercase tracking-[0.2em] text-muted-text whitespace-nowrap">© 2026 Terminify | M &amp; H Consulting GmbH</div>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script src="https://go.terminify.ai/js/form_embed.js" type="text/javascript" defer></script>
+<script>
+  (function(){
+    var els = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window)) {
+      els.forEach(function(e){ e.classList.add('in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    els.forEach(function(e){ io.observe(e); });
+  })();
+</script>
+
+</body>
+</html>
