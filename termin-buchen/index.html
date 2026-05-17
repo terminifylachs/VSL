@@ -8,11 +8,12 @@
 <meta name="robots" content="noindex">
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 
-<link rel="preconnect" href="https://go.terminify.ai" crossorigin>
+<link rel="preconnect" href="https://assets.calendly.com" crossorigin>
+<link rel="preconnect" href="https://calendly.com" crossorigin>
 <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="dns-prefetch" href="https://go.terminify.ai">
+<link rel="dns-prefetch" href="https://assets.calendly.com">
 
 <!-- Facebook Pixel -->
 <script>
@@ -76,9 +77,8 @@ src="https://www.facebook.com/tr?id=1783264035649259&ev=PageView&noscript=1"/>
   .icon { width: 1em; height: 1em; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; display: inline-block; vertical-align: middle; }
   .icon-fill { fill: currentColor; stroke: currentColor; }
 
-  /* Booking widget: sensible height before form_embed.js resizes it */
-  #booking-frame { width: 100%; border: 0; overflow: hidden; min-height: 760px; display: block; }
-  @media (min-width: 768px) { #booking-frame { min-height: 700px; } }
+  /* Calendly inline widget */
+  .calendly-inline-widget { min-width: 320px; height: 700px; }
 </style>
 </head>
 <body class="bg-void-black text-white">
@@ -163,15 +163,11 @@ src="https://www.facebook.com/tr?id=1783264035649259&ev=PageView&noscript=1"/>
   <!-- BOOKING WIDGET -->
   <section class="relative z-10 pb-16 md:pb-24">
     <div class="max-w-4xl mx-auto px-6">
-      <div class="reveal rounded-[14px] border border-white/10 bg-void-depth/80 backdrop-blur-sm shadow-[0_0_80px_rgba(200,247,79,0.08)] overflow-hidden p-2 sm:p-4 md:p-6">
-        <iframe
-          src="https://go.terminify.ai/widget/booking/96gJNxO6rzFCLXnYNeNl"
-          id="96gJNxO6rzFCLXnYNeNl_1779050200121"
-          scrolling="no"
-          loading="eager"
-          title="Terminify Strategie-Call buchen"
-          class="rounded-md bg-void-black"
-          style="width:100%;border:none;overflow:hidden;min-height:760px;display:block;"></iframe>
+      <div class="reveal rounded-[14px] border border-white/10 bg-white shadow-[0_0_80px_rgba(200,247,79,0.08)] overflow-hidden">
+        <!-- Calendly Inline-Widget Beginn -->
+        <div class="calendly-inline-widget" data-url="https://calendly.com/terminify-ai" style="min-width:320px;height:700px;"></div>
+        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+        <!-- Calendly Inline-Widget Ende -->
       </div>
 
       <!-- Social Proof -->
@@ -227,7 +223,6 @@ src="https://www.facebook.com/tr?id=1783264035649259&ev=PageView&noscript=1"/>
   </footer>
 </div>
 
-<script src="https://go.terminify.ai/js/form_embed.js" type="text/javascript" defer></script>
 <script>
   (function(){
     var els = document.querySelectorAll('.reveal');
