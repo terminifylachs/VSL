@@ -134,8 +134,9 @@ src="https://www.facebook.com/tr?id=1783264035649259&ev=PageView&noscript=1"/>
   </div>
 
   <!-- Navbar -->
-  <header class="relative z-50 sticky top-0 bg-void-black/70 backdrop-blur-xl border-b border-white/5">
-    <div class="max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+  <header class="relative z-50 sticky top-0">
+    <div class="pointer-events-none absolute inset-0 -bottom-8 bg-gradient-to-b from-void-black via-void-black/80 to-transparent backdrop-blur-md" style="-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 55%,transparent 100%);mask-image:linear-gradient(to bottom,#000 0%,#000 55%,transparent 100%);"></div>
+    <div class="relative max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
       <img src="logo.jpg" alt="Terminify" class="h-6 w-auto object-contain">
       <nav class="hidden md:flex items-center gap-10 text-[11px] uppercase tracking-[0.2em] font-semibold text-body-text">
         <a href="#features" class="hover:text-white transition-colors">Features</a>
@@ -177,16 +178,6 @@ src="https://www.facebook.com/tr?id=1783264035649259&ev=PageView&noscript=1"/>
 
       <!-- Video Frame -->
       <div class="reveal relative w-full max-w-[1100px] mx-auto rounded-[14px] border border-white/10 bg-void-depth shadow-[0_0_80px_rgba(200,247,79,0.08)] overflow-hidden">
-        <div class="w-full h-10 bg-[#0a0a0c] flex items-center px-4 border-b border-white/5">
-          <div class="flex gap-2 mr-6">
-            <div class="w-3 h-3 rounded-full bg-[#FF5F57]"></div>
-            <div class="w-3 h-3 rounded-full bg-[#FEBC2E]"></div>
-            <div class="w-3 h-3 rounded-full bg-[#28C840]"></div>
-          </div>
-          <div class="flex-1 bg-void-black/70 rounded-xs h-6 flex items-center px-3 border border-white/5">
-            <span class="text-[10px] text-muted-text font-mono truncate">🔒 vsl.terminify.ai — Strategie-Video</span>
-          </div>
-        </div>
         <div class="aspect-video bg-void-black">
           <iframe src="https://fast.wistia.net/embed/iframe/v2c6iz7tr6?seo=true&amp;videoFoam=false"
             title="Terminify Strategie-Video"
