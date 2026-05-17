@@ -4,16 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Terminify — Strategie-Call buchen</title>
-<meta name="description" content="Buch dir deinen kostenfreien Strategie-Call. In 30 Minuten zeigen wir dir, wie dein Setup bei Terminify aussehen würde – inkl. Termin-Prognose und Bottleneck-Analyse.">
+<meta name="description" content="Buch dir deinen kostenfreien Strategie-Call. In 30 Minuten analysieren wir deinen Sales Funnel, identifizieren deinen größten Hebel und zeigen dir dein KI-Setter-Setup bei Terminify.">
 <meta name="robots" content="noindex">
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 
-<link rel="preconnect" href="https://assets.calendly.com" crossorigin>
-<link rel="preconnect" href="https://calendly.com" crossorigin>
+<link rel="preconnect" href="https://go.terminify.ai" crossorigin>
 <link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="dns-prefetch" href="https://assets.calendly.com">
+<link rel="dns-prefetch" href="https://go.terminify.ai">
 
 <!-- Facebook Pixel -->
 <script>
@@ -77,8 +76,8 @@ src="https://www.facebook.com/tr?id=1783264035649259&ev=PageView&noscript=1"/>
   .icon { width: 1em; height: 1em; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; display: inline-block; vertical-align: middle; }
   .icon-fill { fill: currentColor; stroke: currentColor; }
 
-  /* Calendly inline widget */
-  .calendly-inline-widget { min-width: 320px; height: 700px; }
+  /* Booking widget: sensible height before form_embed.js resizes it */
+  #96gJNxO6rzFCLXnYNeNl_1779050200121 { width: 100%; border: 0; overflow: hidden; min-height: 760px; display: block; }
 </style>
 </head>
 <body class="bg-void-black text-white">
@@ -120,35 +119,23 @@ src="https://www.facebook.com/tr?id=1783264035649259&ev=PageView&noscript=1"/>
     <div class="absolute" style="bottom:-10%; right:-10%; width:50%; height:40%; background:rgba(200,247,79,0.06); filter:blur(160px); border-radius:9999px;"></div>
   </div>
 
-  <!-- Navbar -->
-  <header class="relative z-50 sticky top-0">
-    <div class="pointer-events-none absolute inset-0 -bottom-8 bg-gradient-to-b from-void-black via-void-black/80 to-transparent backdrop-blur-md" style="-webkit-mask-image:linear-gradient(to bottom,#000 0%,#000 55%,transparent 100%);mask-image:linear-gradient(to bottom,#000 0%,#000 55%,transparent 100%);"></div>
-    <div class="relative max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
+  <!-- Navbar (wie /1: transparent, zentriert, 5rem) -->
+  <header class="relative z-50">
+    <div class="max-w-3xl mx-auto px-6 h-20 flex items-center justify-center">
       <a href="https://vsl.terminify.ai/2"><img src="logo.jpg" alt="Terminify" class="h-6 w-auto object-contain"></a>
-      <a href="https://vsl.terminify.ai/2" class="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.2em] font-semibold text-body-text hover:text-white transition-colors">
-        <svg class="icon" style="width:14px;height:14px"><use href="#i-arrow-left"/></svg>
-        Zurück
-      </a>
     </div>
   </header>
 
   <!-- HERO -->
-  <section class="relative z-10 pt-10 pb-10 md:pt-16 md:pb-12">
-    <div class="max-w-3xl mx-auto px-6 text-center">
-      <div class="reveal mb-8 flex justify-center">
-        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-neon-lime/40 bg-neon-lime/[0.06] backdrop-blur-sm">
-          <svg class="icon text-neon-lime" style="width:14px;height:14px"><use href="#i-sparkles"/></svg>
-          <span class="text-[11px] uppercase tracking-[0.2em] font-semibold text-neon-lime">✦ Letzter Schritt</span>
-        </div>
-      </div>
-      <h1 class="reveal font-black tracking-[-0.03em] mb-6" style="font-size:clamp(1.95rem,5.2vw,3.75rem);line-height:1.12;">
-        <span class="grad-white block sm:whitespace-nowrap">Buch dir deinen kostenfreien</span>
-        <span class="grad-lime block sm:whitespace-nowrap">Strategie-Call.</span>
+  <section class="relative z-10 pt-6 pb-10 md:pt-10 md:pb-12">
+    <div class="max-w-5xl mx-auto px-6 text-center">
+      <h1 class="reveal font-black tracking-[-0.022em] mb-6 grad-white" style="font-size:clamp(1.3rem,3.4vw,2.6rem);line-height:1.15;">
+        <span class="block sm:whitespace-nowrap">Buch dir deinen kostenfreien Strategie-Call.</span>
       </h1>
-      <p class="reveal text-body-text text-base md:text-lg leading-[1.7] mb-8">
-        In 30 Minuten zeigen wir dir, wie dein Setup bei Terminify aussehen würde.
-        Inklusive konkreter Termin-Prognose und Bottleneck-Analyse deines aktuellen
-        Sales-Prozesses.
+      <p class="reveal text-body-text text-base md:text-lg leading-[1.7] mb-8 max-w-3xl mx-auto">
+        In 30 Minuten analysieren wir deinen bestehenden Sales Funnel, identifizieren
+        deinen größten Hebel und zeigen dir, wie dein KI Setter Setup bei Terminify
+        aussehen würde.
       </p>
       <div class="reveal flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-6 text-xs uppercase tracking-[0.2em] text-muted-text">
         <div class="flex items-center gap-2"><svg class="icon text-neon-lime" style="width:14px;height:14px"><use href="#i-clock"/></svg>30 Min</div>
@@ -162,12 +149,16 @@ src="https://www.facebook.com/tr?id=1783264035649259&ev=PageView&noscript=1"/>
 
   <!-- BOOKING WIDGET -->
   <section class="relative z-10 pb-16 md:pb-24">
-    <div class="max-w-4xl mx-auto px-6">
-      <div class="reveal rounded-[14px] border border-white/10 bg-white shadow-[0_0_80px_rgba(200,247,79,0.08)] overflow-hidden">
-        <!-- Calendly Inline-Widget Beginn -->
-        <div class="calendly-inline-widget" data-url="https://calendly.com/terminify-ai" style="min-width:320px;height:700px;"></div>
-        <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
-        <!-- Calendly Inline-Widget Ende -->
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="reveal rounded-[14px] border border-white/10 bg-void-depth/80 backdrop-blur-sm shadow-[0_0_80px_rgba(200,247,79,0.08)] overflow-hidden p-2 sm:p-4 md:p-6">
+        <iframe
+          src="https://go.terminify.ai/widget/booking/96gJNxO6rzFCLXnYNeNl"
+          id="96gJNxO6rzFCLXnYNeNl_1779050200121"
+          scrolling="no"
+          loading="eager"
+          title="Terminify Strategie-Call buchen"
+          class="rounded-md bg-void-black"
+          style="width:100%;border:none;overflow:hidden;min-height:760px;display:block;"></iframe>
       </div>
 
       <!-- Social Proof -->
@@ -238,6 +229,7 @@ src="https://www.facebook.com/tr?id=1783264035649259&ev=PageView&noscript=1"/>
     els.forEach(function(e){ io.observe(e); });
   })();
 </script>
+<script src="https://go.terminify.ai/js/form_embed.js" type="text/javascript" defer></script>
 
 </body>
 </html>
