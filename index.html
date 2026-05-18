@@ -132,8 +132,9 @@ src="https://www.facebook.com/tr?id=1783264035649259&ev=PageView&noscript=1"/>
     <div class="relative max-w-6xl mx-auto px-6 h-20 flex items-center justify-between">
       <img src="logo.jpg" alt="Terminify" class="h-6 w-auto object-contain">
       <nav class="hidden md:flex items-center gap-12 text-[11px] uppercase tracking-[0.2em] font-semibold text-body-text">
+        <a href="#video" class="hover:text-white transition-colors">Erklärvideo</a>
         <a href="#cases" class="hover:text-white transition-colors">Rezensionen</a>
-        <a href="#system" class="hover:text-white transition-colors">System</a>
+        <a href="#system" class="hover:text-white transition-colors">Unser System</a>
       </nav>
       <a href="https://vsl.terminify.ai/termin-buchen" class="inline-flex items-center gap-2 bg-gradient-to-b from-neon-lime to-neon-green text-black px-5 py-2.5 rounded-xs font-bold text-xs uppercase tracking-[0.15em] transition-all hover:shadow-[0_0_25px_rgba(200,247,79,0.35)]">
         <svg class="icon" style="width:14px;height:14px"><use href="#i-calendar"/></svg>
@@ -151,7 +152,7 @@ src="https://www.facebook.com/tr?id=1783264035649259&ev=PageView&noscript=1"/>
       </h1>
 
       <!-- Video Frame -->
-      <div class="reveal relative w-full max-w-[1140px] mx-auto rounded-[14px] border border-white/10 bg-void-depth shadow-[0_0_80px_rgba(200,247,79,0.08)] overflow-hidden mb-8 md:mb-10">
+      <div id="video" class="reveal relative w-full max-w-[1140px] mx-auto rounded-[14px] border border-white/10 bg-void-depth shadow-[0_0_80px_rgba(200,247,79,0.08)] overflow-hidden mb-8 md:mb-10 scroll-mt-24">
         <div class="aspect-video bg-void-black">
           <iframe src="https://fast.wistia.net/embed/iframe/a4hymsr18r?seo=true&amp;videoFoam=false"
             title="Terminify Strategie-Video"
@@ -345,13 +346,13 @@ src="https://www.facebook.com/tr?id=1783264035649259&ev=PageView&noscript=1"/>
             <span class="text-[10px] uppercase tracking-[0.2em] font-bold text-neon-lime">Ab 2026</span>
           </div>
           <h3 class="text-2xl font-black mb-3 text-white">Unser Chatbot-Funnel</h3>
-          <p class="text-body-text text-sm leading-[1.7] mb-8">Ein "KI Setter" liefert planbare Termine bei einem Bruchteil der Kosten.</p>
+          <p class="text-body-text text-sm leading-[1.7] mb-8">Ein "KI Setter" liefert planbar mehr Termine bei einem Bruchteil der Kosten.</p>
           <ul class="space-y-4">
             <li class="flex gap-3 text-sm text-body-text"><svg class="icon text-neon-lime flex-shrink-0 mt-0.5" style="width:16px;height:16px"><use href="#i-check"/></svg><span>30 bis 50 qualifizierte Sales Calls pro Woche</span></li>
             <li class="flex gap-3 text-sm text-body-text"><svg class="icon text-neon-lime flex-shrink-0 mt-0.5" style="width:16px;height:16px"><use href="#i-check"/></svg><span>Lead-Response-Time unter 5 Minuten, 24/7</span></li>
             <li class="flex gap-3 text-sm text-body-text"><svg class="icon text-neon-lime flex-shrink-0 mt-0.5" style="width:16px;height:16px"><use href="#i-check"/></svg><span>No-Show-Rate unter 12%</span></li>
             <li class="flex gap-3 text-sm text-body-text"><svg class="icon text-neon-lime flex-shrink-0 mt-0.5" style="width:16px;height:16px"><use href="#i-check"/></svg><span>Ein KI-Setter, der schreibt wie du und nie ausfällt</span></li>
-            <li class="flex gap-3 text-sm text-body-text"><svg class="icon text-neon-lime flex-shrink-0 mt-0.5" style="width:16px;height:16px"><use href="#i-check"/></svg><span>Ein zentrales Dashboard für alle Funnel-Zahlen</span></li>
+            <li class="flex gap-3 text-sm text-body-text"><svg class="icon text-neon-lime flex-shrink-0 mt-0.5" style="width:16px;height:16px"><use href="#i-check"/></svg><span>Eine Schaltzentrale für alle wichtigen KPIs</span></li>
             <li class="flex gap-3 text-sm text-body-text"><svg class="icon text-neon-lime flex-shrink-0 mt-0.5" style="width:16px;height:16px"><use href="#i-check"/></svg><span>Close-Rate von 25 bis 60%</span></li>
             <li class="flex gap-3 text-sm text-body-text"><svg class="icon text-neon-lime flex-shrink-0 mt-0.5" style="width:16px;height:16px"><use href="#i-check"/></svg><span>Deine CEO-Zeit zurück, DMs laufen automatisch</span></li>
             <li class="flex gap-3 text-sm text-body-text"><svg class="icon text-neon-lime flex-shrink-0 mt-0.5" style="width:16px;height:16px"><use href="#i-check"/></svg><span>Sales-System, das auch ohne dich läuft</span></li>
@@ -435,6 +436,17 @@ src="https://www.facebook.com/tr?id=1783264035649259&ev=PageView&noscript=1"/>
       });
     }, { threshold: 0.15, rootMargin: '0px 0px -10% 0px' });
     els.forEach(function(e){ io.observe(e); });
+  })();
+
+  // "Erklärvideo" nav link: center the video in the viewport
+  (function(){
+    var link = document.querySelector('a[href="#video"]');
+    var vid = document.getElementById('video');
+    if (!link || !vid) return;
+    link.addEventListener('click', function(e){
+      e.preventDefault();
+      vid.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
   })();
 </script>
 
