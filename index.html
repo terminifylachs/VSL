@@ -74,6 +74,14 @@ src="https://www.facebook.com/tr?id=1783264035649259&ev=PageView&noscript=1"/>
 
   .icon { width: 1em; height: 1em; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; display: inline-block; vertical-align: middle; }
   .icon-fill { fill: currentColor; stroke: currentColor; }
+
+  /* Wistia hero: scale the Big Play Button to ~60% */
+  wistia-player::part(big-play-button),
+  .w-big-play-button,
+  [class*="BigPlayButton"] {
+    transform: scale(0.6) !important;
+    transform-origin: center center !important;
+  }
 </style>
 </head>
 <body class="bg-void-black text-white">
@@ -158,11 +166,9 @@ src="https://www.facebook.com/tr?id=1783264035649259&ev=PageView&noscript=1"/>
       <!-- Video Frame -->
       <div id="video" class="reveal relative w-full max-w-[1140px] mx-auto rounded-[14px] border border-white/10 bg-void-depth shadow-[0_0_80px_rgba(200,247,79,0.08)] overflow-hidden mb-8 md:mb-10 scroll-mt-24">
         <div class="aspect-video bg-void-black">
-          <iframe src="https://fast.wistia.net/embed/iframe/a4hymsr18r?seo=true&amp;videoFoam=false"
-            title="Terminify Strategie-Video"
-            allow="autoplay; fullscreen"
-            allowtransparency="true" frameborder="0" scrolling="no"
-            class="w-full h-full block" width="100%" height="100%"></iframe>
+          <script src="https://fast.wistia.com/player.js" async></script>
+          <script src="https://fast.wistia.com/embed/a4hymsr18r.js" async type="module"></script>
+          <wistia-player media-id="a4hymsr18r" aspect="1.7777777777777777" class="w-full h-full block"></wistia-player>
         </div>
       </div>
 
