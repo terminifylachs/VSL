@@ -6,31 +6,7 @@
 <title>TERMINIFY.AI - Offizielle Homepage</title>
 <link rel="icon" type="image/svg+xml" href="../favicon.svg">
 
-<!-- Facebook Pixel -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1783264035649259');
-fbq('track', 'PageView');
-</script>
-<noscript>
-<img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1783264035649259&ev=PageView&noscript=1"/>
-</noscript>
-<!-- End Facebook Pixel -->
-
-<!-- VSL Tracking -->
-<script>
-  window.VSL_TRACKER_URL = 'https://vsl-dashboard.vercel.app/api/track';
-</script>
-<script src="https://vsl-dashboard.vercel.app/tracker.js" async></script>
-<!-- End VSL Tracking -->
+<!-- Tracking (Meta-Pixel + VSL) wird erst nach Cookie-Einwilligung geladen (siehe Consent-Banner am Seitenende) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
@@ -747,5 +723,52 @@ document.querySelectorAll('a[href^="#"]').forEach(a=>{
   });
 });
 </script>
+
+<!-- Cookie Consent (DSGVO Art. 6 (1) a / TTDSG §25) -->
+<style>
+  #tcb{position:fixed;left:0;right:0;bottom:0;z-index:2147483000;display:none;padding:12px;font-family:'Inter','Plus Jakarta Sans',system-ui,sans-serif}
+  #tcb.tcb-show{display:block}
+  #tcb .tcb-card{max-width:440px;margin:0 auto;background:rgba(14,16,24,.97);border:1px solid rgba(200,247,79,.22);border-radius:12px;box-shadow:0 12px 44px rgba(0,0,0,.6);padding:16px 18px}
+  #tcb p{margin:0 0 12px;font-size:12px;line-height:1.6;color:#9CA3AF}
+  #tcb a{color:#c8f74f;text-decoration:none}
+  #tcb a:hover{text-decoration:underline}
+  #tcb .tcb-btns{display:flex;gap:8px;flex-direction:column}
+  @media(min-width:480px){#tcb .tcb-btns{flex-direction:row}}
+  #tcb button{flex:1;cursor:pointer;font-family:inherit;font-weight:700;font-size:12px;letter-spacing:.04em;padding:11px 16px;border-radius:7px;border:1px solid transparent;transition:box-shadow .2s,border-color .2s}
+  #tcb .tcb-accept{background:linear-gradient(to bottom,#c8f74f,#2af10c);color:#000}
+  #tcb .tcb-accept:hover{box-shadow:0 0 24px rgba(200,247,79,.35)}
+  #tcb .tcb-reject{background:transparent;border-color:rgba(255,255,255,.18);color:#fff}
+  #tcb .tcb-reject:hover{border-color:rgba(200,247,79,.5)}
+</style>
+<div id="tcb" role="dialog" aria-label="Cookie-Einwilligung">
+  <div class="tcb-card">
+    <p>Wir nutzen Cookies &amp; Tracking-Technologien (u.a. Meta-Pixel), um Marketing zu messen und die Website zu verbessern. Mit &#8222;Akzeptieren&#8220; willigst du gem. Art. 6 Abs. 1 lit. a DSGVO ein &#8211; freiwillig und jederzeit widerruflich. Details in der <a href="https://vsl.terminify.ai/datenschutz/">Datenschutzerkl&auml;rung</a>.</p>
+    <div class="tcb-btns">
+      <button class="tcb-reject" id="tcb-reject" type="button">Ablehnen</button>
+      <button class="tcb-accept" id="tcb-accept" type="button">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var KEY='terminify_consent_v1', el=document.getElementById('tcb');
+  function loadTracking(){
+    if(window.__tcbLoaded)return; window.__tcbLoaded=true;
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','1783264035649259');fbq('track','PageView');
+    window.VSL_TRACKER_URL='https://vsl-dashboard.vercel.app/api/track';
+    var sc=document.createElement('script');sc.src='https://vsl-dashboard.vercel.app/tracker.js';sc.async=true;document.head.appendChild(sc);
+  }
+  try{
+    var c=localStorage.getItem(KEY);
+    if(c==='accepted'){loadTracking();}
+    else if(c!=='rejected'){el.classList.add('tcb-show');}
+  }catch(e){el.classList.add('tcb-show');}
+  var a=document.getElementById('tcb-accept'),r=document.getElementById('tcb-reject');
+  a.onclick=function(){try{localStorage.setItem(KEY,'accepted')}catch(e){}el.classList.remove('tcb-show');loadTracking();};
+  r.onclick=function(){try{localStorage.setItem(KEY,'rejected')}catch(e){}el.classList.remove('tcb-show');};
+})();
+</script>
+
 </body>
 </html>
