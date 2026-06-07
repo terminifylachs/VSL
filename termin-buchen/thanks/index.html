@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Termin gebucht — Terminify</title>
+<meta name="description" content="Dein Strategie-Call ist gebucht. Wir freuen uns auf das Gespräch.">
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+
+<!-- Tracking (Meta-Pixel + VSL) wird erst nach Cookie-Einwilligung geladen (siehe Consent-Banner am Seitenende) -->
+
+<link rel="preconnect" href="https://cdn.tailwindcss.com" crossorigin>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          void: { navy: '#0A0C12', depth: '#0E1018', ink: '#050507', black: '#000001' },
+          card: { surface: '#161A26', light: '#1E2235' },
+          neon: { lime: '#c8f74f', green: '#2af10c', glow: '#9bf43a' },
+          reject: { red: '#F24E4E' },
+          'primary-text': '#FFFFFF',
+          'body-text': '#9CA3AF',
+          'muted-text': '#6B7280',
+        },
+        fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
+        borderRadius: { xs: '6px', sm: '8px', md: '10px' },
+      },
+    },
+  }
+</script>
+
+<style>
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  .grad-white { background-image: linear-gradient(to bottom, #ffffff, rgba(255,255,255,.6)); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+  .grad-lime { background-image: linear-gradient(to bottom, #c8f74f, #2af10c); -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+</style>
+</head>
+<body class="bg-void-black text-white">
+
+<div class="relative min-h-screen bg-void-black text-white font-sans overflow-hidden">
+
+  <!-- Blueprint Background -->
+  <div class="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+    <div class="absolute inset-0" style="background: linear-gradient(to bottom, #000001, #030305, #000001);"></div>
+    <div class="absolute inset-0" style="
+      opacity: 0.06;
+      background-image:
+        linear-gradient(rgba(200,247,79,0.4) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(200,247,79,0.4) 1px, transparent 1px);
+      background-size: 64px 64px;
+      -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,0,0,0.9) 0%, transparent 70%);
+              mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,0,0,0.9) 0%, transparent 70%);
+    "></div>
+    <div class="absolute" style="top:-15%; left:50%; transform:translateX(-50%); width:70%; height:55%; background:rgba(200,247,79,0.08); filter:blur(180px); border-radius:9999px;"></div>
+  </div>
+
+  <!-- Navbar (transparent, zentriert, 5rem) -->
+  <header class="relative z-50">
+    <div class="max-w-3xl mx-auto px-6 h-20 flex items-center justify-center">
+      <a href="https://vsl.terminify.ai"><img src="../logo.jpg" alt="Terminify" class="h-6 w-auto object-contain"></a>
+    </div>
+  </header>
+
+  <!-- HERO / Bestätigung -->
+  <section class="relative z-10 pt-10 pb-16 md:pt-16 md:pb-24">
+    <div class="max-w-2xl mx-auto px-6 text-center">
+
+      <div class="mx-auto mb-8 flex items-center justify-center w-20 h-20 md:w-24 md:h-24 rounded-full bg-neon-lime/10 border border-neon-lime/40" style="box-shadow:0 0 60px rgba(200,247,79,.18)">
+        <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="#c8f74f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="m5 12 5 5L20 7"/>
+        </svg>
+      </div>
+
+      <h1 class="font-black tracking-[-0.022em] mb-5" style="font-size:clamp(1.7rem,4.6vw,3rem);line-height:1.15;">
+        <span class="grad-white">Dein </span><span class="grad-lime">Strategie-Call</span><span class="grad-white"> ist gebucht.</span>
+      </h1>
+
+      <p class="text-body-text text-base md:text-lg leading-[1.7] mb-8 max-w-xl mx-auto">
+        Du bekommst gleich eine Bestätigung per E-Mail mit Kalender-Einladung. Wir freuen
+        uns auf das Gespräch.
+      </p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
+        <a href="https://vsl.terminify.ai" class="inline-flex items-center gap-2 px-6 py-3 rounded-xs font-bold text-sm tracking-wide border border-white/15 text-white hover:border-neon-lime/60 hover:bg-neon-lime/5 transition-all">
+          Zur Startseite
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<!-- Cookie Consent (DSGVO Art. 6 (1) a / TTDSG §25) -->
+<style>
+  #tcb{position:fixed;left:0;right:0;bottom:0;z-index:2147483000;display:none;padding:12px;font-family:'Inter','Plus Jakarta Sans',system-ui,sans-serif}
+  #tcb.tcb-show{display:block}
+  #tcb .tcb-card{max-width:440px;margin:0 auto;background:rgba(14,16,24,.97);border:1px solid rgba(200,247,79,.22);border-radius:12px;box-shadow:0 12px 44px rgba(0,0,0,.6);padding:16px 18px}
+  #tcb p{margin:0 0 12px;font-size:12px;line-height:1.6;color:#9CA3AF}
+  #tcb a{color:#c8f74f;text-decoration:none}
+  #tcb a:hover{text-decoration:underline}
+  #tcb .tcb-btns{display:flex;gap:8px;flex-direction:column}
+  @media(min-width:480px){#tcb .tcb-btns{flex-direction:row}}
+  #tcb button{flex:1;cursor:pointer;font-family:inherit;font-weight:700;font-size:12px;letter-spacing:.04em;padding:11px 16px;border-radius:7px;border:1px solid transparent;transition:box-shadow .2s,border-color .2s}
+  #tcb .tcb-accept{background:linear-gradient(to bottom,#c8f74f,#2af10c);color:#000}
+  #tcb .tcb-accept:hover{box-shadow:0 0 24px rgba(200,247,79,.35)}
+  #tcb .tcb-reject{background:transparent;border-color:rgba(255,255,255,.18);color:#fff}
+  #tcb .tcb-reject:hover{border-color:rgba(200,247,79,.5)}
+</style>
+<div id="tcb" role="dialog" aria-label="Cookie-Einwilligung">
+  <div class="tcb-card">
+    <p>Wir nutzen Cookies &amp; Tracking-Technologien (u.a. Meta-Pixel), um Marketing zu messen und die Website zu verbessern. Mit &#8222;Akzeptieren&#8220; willigst du gem. Art. 6 Abs. 1 lit. a DSGVO ein &#8211; freiwillig und jederzeit widerruflich. Details in der <a href="https://vsl.terminify.ai/datenschutz/">Datenschutzerkl&auml;rung</a>.</p>
+    <div class="tcb-btns">
+      <button class="tcb-reject" id="tcb-reject" type="button">Ablehnen</button>
+      <button class="tcb-accept" id="tcb-accept" type="button">Akzeptieren</button>
+    </div>
+  </div>
+</div>
+<script>
+(function(){
+  var KEY='terminify_consent_v1', el=document.getElementById('tcb');
+  function getEventId(){
+    try {
+      var p = new URLSearchParams(window.location.search);
+      var eid = p.get('eid');
+      if (eid && eid.trim()) return eid.trim();
+    } catch(e) {}
+    // Fallback: per-pageview unique ID
+    try {
+      if (window.crypto && typeof window.crypto.randomUUID === 'function') {
+        return 'tfb_' + window.crypto.randomUUID();
+      }
+    } catch(e) {}
+    return 'tfb_' + Date.now() + '_' + Math.random().toString(36).slice(2,10);
+  }
+  function loadTracking(){
+    if(window.__tcbLoaded)return; window.__tcbLoaded=true;
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init','989464427134148');
+    fbq('track','PageView');
+    fbq('track','Schedule', {}, { eventID: getEventId() });
+    window.VSL_TRACKER_URL='https://vsl-dashboard.vercel.app/api/track';
+    var sc=document.createElement('script');sc.src='https://vsl-dashboard.vercel.app/tracker.js';sc.async=true;document.head.appendChild(sc);
+  }
+  try{
+    var c=localStorage.getItem(KEY);
+    if(c==='accepted'){loadTracking();}
+    else if(c!=='rejected'){el.classList.add('tcb-show');}
+  }catch(e){el.classList.add('tcb-show');}
+  var a=document.getElementById('tcb-accept'),r=document.getElementById('tcb-reject');
+  a.onclick=function(){try{localStorage.setItem(KEY,'accepted')}catch(e){}el.classList.remove('tcb-show');loadTracking();};
+  r.onclick=function(){try{localStorage.setItem(KEY,'rejected')}catch(e){}el.classList.remove('tcb-show');};
+})();
+</script>
+
+</body>
+</html>
