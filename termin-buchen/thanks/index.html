@@ -147,8 +147,7 @@
     fbq('init','989464427134148');
     fbq('track','PageView');
     fbq('track','Schedule', {}, { eventID: getEventId() });
-    window.VSL_TRACKER_URL='https://vsl-dashboard.vercel.app/api/track';
-    var sc=document.createElement('script');sc.src='https://vsl-dashboard.vercel.app/tracker.js';sc.async=true;document.head.appendChild(sc);
+    var sc=document.createElement('script');sc.src='/track.js';sc.async=true;document.head.appendChild(sc);
   }
   try{
     var c=localStorage.getItem(KEY);
