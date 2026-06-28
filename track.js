@@ -7,7 +7,6 @@
   "use strict";
 
   var ENDPOINT = window.TF_TRACK_ENDPOINT || "https://hq.terminify.ai/api/track";
-  var WISTIA_ID = "s5wchi9l7w";
 
   // ── Session-ID (anonym, persistent) ──
   function sid() {
@@ -94,7 +93,9 @@
   // ── 1) Pageview ──
   send("pageview");
 
-  // ── 2) Wistia: Play + Watch-Meilensteine ──
+  // ── 2) Wistia: Play + Watch-Meilensteine (nur Hero-VSL, nicht Testimonials) ──
+  // Hero = erster <wistia-player> auf der Seite. So bleibt das Tracking
+  // korrekt, auch wenn das Video später ausgetauscht wird (ID nicht fest).
   var played = false;
   var milestones = {};
   function mark(p) {
@@ -105,24 +106,56 @@
       }
     });
   }
-  window._wq = window._wq || [];
-  window._wq.push({
-    id: WISTIA_ID,
-    onReady: function (video) {
-      video.bind("play", function () {
-        if (!played) {
-          played = true;
-          send("vsl_play");
-        }
-      });
-      video.bind("percentwatched", function (percent) {
-        mark(Math.floor(percent * 100));
-      });
-      video.bind("end", function () {
-        mark(100);
-      });
-    },
-  });
+  function onPlay() {
+    if (!played) {
+      played = true;
+      send("vsl_play");
+    }
+  }
+
+  // (a) Neuer Web-Component-Player (<wistia-player> + player.js)
+  function bindEl(el) {
+    if (!el || el.__tfBound) return;
+    el.__tfBound = true;
+    el.addEventListener("play", onPlay);
+    el.addEventListener("percentwatchedchanged", function (e) {
+      var d = e.detail || {};
+      var p = d.percent != null ? d.percent : Array.isArray(d) ? d[0] : null;
+      if (p != null) mark(Math.floor(p * 100));
+    });
+    el.addEventListener("ended", function () { mark(100); });
+    el.addEventListener("end", function () { mark(100); });
+  }
+  var heroEl = document.querySelector("wistia-player");
+  if (heroEl) bindEl(heroEl);
+  // Falls der Player erst später ins DOM kommt: kurz beobachten.
+  if (!heroEl && window.MutationObserver) {
+    var mo = new MutationObserver(function () {
+      var el = document.querySelector("wistia-player");
+      if (el) {
+        bindEl(el);
+        mo.disconnect();
+      }
+    });
+    mo.observe(document.documentElement, { childList: true, subtree: true });
+    setTimeout(function () { mo.disconnect(); }, 15000);
+  }
+
+  // (b) Klassische JS-API als Fallback (gleiche Hero-ID, dedupliziert via Flags)
+  var heroId = (heroEl && heroEl.getAttribute("media-id")) || window.TF_WISTIA_ID;
+  if (heroId) {
+    window._wq = window._wq || [];
+    window._wq.push({
+      id: heroId,
+      onReady: function (video) {
+        video.bind("play", onPlay);
+        video.bind("percentwatched", function (percent) {
+          mark(Math.floor(percent * 100));
+        });
+        video.bind("end", function () { mark(100); });
+      },
+    });
+  }
 
   // ── 3) CTA-Klicks (Buchungs-Links) ──
   // Erfasst sowohl direkte GHL-Links als auch die interne /termin-buchen-Seite.
